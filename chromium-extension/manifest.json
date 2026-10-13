@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Enketo Toolkit",
+  "version": "1.0",
+  "description": "Refreshes cached Enketo form data, manages saved drafts (export, rename, delete), restores exported answers onto a fresh form with an option to skip or override calculated fields, and fixes stuck submission errors.",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "enketo-toolkit@isslam-elkasah.local",
+      "strict_min_version": "109.0"
+    }
+  }
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 340px;
+      font-family: Arial, sans-serif;
+      padding: 12px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1b5e20;
+    }
+    button:disabled {
+      background-color: #9e9e9e;
+      cursor: default;
+    }
+    #status {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #444;
+      min-height: 16px;
+      text-align: center;
+    }
+    #draftsSection {
+      margin-top: 16px;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+    }
+    #draftsSection h3 {
+      font-size: 13px;
+      margin: 0 0 8px 0;
+      color: #333;
+    }
+    .draft-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 12px;
+    }
+    .draft-info {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-right: 6px;
+    }
+    .draft-name {
+      font-weight: bold;
+      color: #222;
+    }
+    .draft-date {
+      color: #777;
+      font-size: 11px;
+    }
+    .draft-actions {
+      display: flex;
+      gap: 3px;
+    }
+    .draft-actions button {
+      width: auto;
+      padding: 4px 6px;
+      font-size: 10px;
+      border-radius: 4px;
+    }
+    .rename-btn {
+      background-color: #ef6c00;
+    }
+    .rename-btn:hover {
+      background-color: #b34700;
+    }
+    .export-btn {
+      background-color: #1565c0;
+    }
+    .export-btn:hover {
+      background-color: #0d47a1;
+    }
+    .delete-btn {
+      background-color: #c62828;
+    }
+    .delete-btn:hover {
+      background-color: #8e0000;
+    }
+    #noDrafts {
+      font-size: 12px;
+      color: #777;
+      text-align: center;
+      padding: 6px 0;
+    }
+    #importSection {
+      margin-top: 16px;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+    }
+    #importSection h3 {
+      font-size: 13px;
+      margin: 0 0 8px 0;
+      color: #333;
+    }
+    #importSection p {
+      font-size: 11px;
+      color: #777;
+      margin: 0 0 8px 0;
+    }
+    .import-btn {
+      background-color: #6a1b9a;
+    }
+    .import-btn:hover {
+      background-color: #4a148c;
+    }
+  </style>
+</head>
+<body>
+  <button id="refreshBtn">Refresh Parent Data</button>
+  <div id="status"></div>
+
+  <div id="draftsSection">
+    <h3>Saved Drafts (this form)</h3>
+    <div id="draftsList"></div>
+  </div>
+
+  <div id="importSection">
+    <h3>Restore from Exported XML</h3>
+    <p>Use this on a fresh, working copy of the form to re-populate fields from a previously exported draft. Repeat groups, file uploads, and some special widgets may not fully restore. System fields (instance ID, etc.) are always skipped.</p>
+    <label style="font-size:11px; color:#555; display:flex; align-items:center; gap:6px; margin-bottom:8px;">
+      <input type="checkbox" id="skipCalculatedInput" checked style="margin:0;">
+      Skip calculated fields (recommended)
+    </label>
+    <label for="excludeFieldsInput" style="font-size:11px; color:#555; display:block; margin-bottom:4px;">Also skip fields named (optional, comma-separated):</label>
+    <input type="text" id="excludeFieldsInput" value="" style="width:100%; box-sizing:border-box; padding:6px; font-size:12px; margin-bottom:8px; border:1px solid #ccc; border-radius:4px;">
+    <button id="importBtn" class="import-btn">Choose XML File...</button>
+    <input type="file" id="importFileInput" accept=".xml" style="display:none;">
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

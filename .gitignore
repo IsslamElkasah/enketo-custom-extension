@@ -1,0 +1,13 @@
+*.pem
+*.key
+.amo-upload-uuid
+/other
+*.xlsx
+*.txt
+
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*~
